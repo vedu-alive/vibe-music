@@ -22,7 +22,7 @@ interface ChatStore {
   setSelectedUser: (user: User) => void;
 }
 
-const baseUrl = "http://localhost:9000";
+const baseUrl = import.meta.env.MODE === "development" ? "http://localhost:9000" : "/";
 const socket = io(baseUrl, {
   autoConnect: false, //* only connect if user is authenticated
   withCredentials: true, //* send cookies along with the request
